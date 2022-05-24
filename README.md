@@ -37,18 +37,20 @@ bash nodes_osm_to_poi_osm.sh
 
 bash poi_osm_to_poi_geojson.sh
 
+```
+
 |Input|Output|
 |---|---|
 |quebec.poi.osm|quebec.poi.geojson|
 
-```
-
 ### 5. Clean (Geo)JSOn and extract names, labels and coordinates
-
-THIS NEEDS TO BE REWRITTEN TO *ALSO* GET COORS
 
 ```python
 
-bash nodes_osm_to_poi_osm.sh
+python clean_poi.py quebec.poi.geojson
 
 ```
+
+|Input|Output|
+|---|---|
+|quebec.poi.geojson|quebec.osm.text.tags.coords.pkl|
