@@ -1,1 +1,1 @@
-osmtogeojson quebec.poi.osm > quebec.poi.geojson
+osmtogeojson outputs/quebec.poi.osm > outputs/quebec.poi.geojson

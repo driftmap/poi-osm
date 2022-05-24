@@ -15,35 +15,35 @@ wget https://download.geofabrik.de/north-america/us/california-latest.osm.pbf
 
 **Georgia**
 ```console
-wget https://download.geofabrik.de/north-america/us/georgia-latest.osm.pbf -P /osm_extracts
+wget https://download.geofabrik.de/north-america/us/georgia-latest.osm.pbf -P osm_extracts
 ```
 
 **New York**
 ```console
-wget https://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf
+wget https://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf -P osm_extracts
 ```
 
 **Quebec**
 ```console
-wget https://download.geofabrik.de/north-america/canada/quebec-latest.osm.pbf
+wget https://download.geofabrik.de/north-america/canada/quebec-latest.osm.pbf -P osm_extracts
 ```
 
 ### 2. Select points of interest
 ```console
 
-bash osm_pbf_to_nodes_osm.sh
+bash sh/osm_pbf_to_nodes_osm.sh
 
 ```
 
 |Input|Output|
 |---|---|
-|quebec.osm.pbf|quebec.nodes.osm|
+|\*.osm.pbf|\*.nodes.osm|
 
 ### 3. Drop ways, keep nodes
 
 ```console
 
-bash nodes_osm_to_poi_osm.sh
+bash sh/nodes_osm_to_poi_osm.sh
 
 ```
 |Input|Output|
@@ -55,7 +55,7 @@ bash nodes_osm_to_poi_osm.sh
 
 ```console
 
-bash poi_osm_to_poi_geojson.sh
+bash sh/poi_osm_to_poi_geojson.sh
 
 ```
 
@@ -67,7 +67,7 @@ bash poi_osm_to_poi_geojson.sh
 
 ```python
 
-python clean_poi.py quebec.poi.geojson
+python py/clean_poi.py quebec.poi.geojson
 
 ```
 
