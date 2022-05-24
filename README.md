@@ -48,7 +48,7 @@ bash sh/nodes_osm_to_poi_osm.sh
 ```
 |Input|Output|
 |---|---|
-|quebec.nodes.pbf|quebec.poi.osm|
+|\*.nodes.pbf|\*.poi.osm|
 
 
 ### 4. Convert to (Geo)JSON
@@ -61,7 +61,7 @@ bash sh/poi_osm_to_poi_geojson.sh
 
 |Input|Output|
 |---|---|
-|quebec.poi.osm|quebec.poi.geojson|
+|\*.poi.osm|\*.poi.geojson|
 
 ### 5. Clean (Geo)JSOn and extract names, labels and coordinates
 
@@ -73,4 +73,4 @@ python py/clean_poi.py quebec.poi.geojson
 
 |Input|Output|
 |---|---|
-|quebec.poi.geojson|quebec.osm.text.tags.coords.pkl|
+|\*.poi.geojson|\*.osm.text.tags.coords.pkl|
