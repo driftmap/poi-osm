@@ -6,7 +6,27 @@ Following the general blueprint from [this Medium article](https://medium.com/co
 
 ### 1. Download OSM extract
 
-WRITE SCRIPT
+For the latest OSM extract in the beta testing regions run one of the following scripts:
+
+**California**
+```console
+wget https://download.geofabrik.de/north-america/us/california-latest.osm.pbf
+```
+
+**Georgia**
+```console
+wget https://download.geofabrik.de/north-america/us/georgia-latest.osm.pbf -P /osm_extracts
+```
+
+**New York**
+```console
+wget https://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf
+```
+
+**Quebec**
+```console
+wget https://download.geofabrik.de/north-america/canada/quebec-latest.osm.pbf
+```
 
 ### 2. Select points of interest
 ```console
