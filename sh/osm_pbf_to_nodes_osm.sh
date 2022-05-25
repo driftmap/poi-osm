@@ -1,4 +1,11 @@
-osmosis --read-pbf osm_extracts/quebec.osm.pbf \
+while getopts r: flag
+do
+    case "${flag}" in
+        r) REGION=${OPTARG};;
+    esac
+done
+
+osmosis --read-pbf osm_extracts/$REGION.osm.pbf \
         --tf accept-nodes \
         aerialway=station \
         aeroway=aerodrome,helipad,heliport \
@@ -7,4 +14,4 @@ osmosis --read-pbf osm_extracts/quebec.osm.pbf \
         historic=* leisure=* office=* \
         public_transport=stop_position,stop_area railway=station \
         shop=* tourism=* \
-        --write-xml outputs/quebec.nodes.osm
+        --write-xml outputs/$REGION/nodes.osm
