@@ -47,7 +47,7 @@ class POIParser():
                 attr_parts = properties[attr].split(" ")
                 for part in attr_parts:
                     attr_labels.append((part, attr.upper()))
-            elif 'addr' in attr:
+            elif 'addr:' in attr:
                 attr_split = attr.split(":")[1]
                 if attr_split in self.query_tags:
                     attr_parts = properties[attr].split(" ")
