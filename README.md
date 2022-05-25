@@ -4,8 +4,6 @@ Install [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis): `brew install os
 
 Install [OSMConvert](https://wiki.openstreetmap.org/wiki/Osmconvert): `brew install osmconvert`
 
-
-
 # Parsing points-of-interest from OSM extracts
 
 Following the general blueprint from [this Medium article](https://medium.com/codait/easy-access-to-all-points-of-interest-data-acc6569e45b2).
@@ -47,6 +45,7 @@ python osm_to_json.py parseosm --region {REGION} --osm {BOOLEAN}
 Alternatively you can run through steps 2b to 5 one by one:
 
 ### 2b. Select points of interest
+
 ```console
 bash sh/osm_pbf_to_nodes_osm.sh -r $REGION
 ```
@@ -80,7 +79,6 @@ bash sh/poi_osm_to_poi_geojson.sh -r $REGION
 ```python
 python osm_to_json.py parseosm --region {REGION} --osm False
 ```
-
 
 |Input|Output|
 |---|---|
