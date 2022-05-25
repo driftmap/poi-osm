@@ -6,7 +6,7 @@ do
     esac
 done
 
-ls ../osm_extracts/
+#ls ../osm_extracts/
 osmosis --read-pbf ../osm_extracts/$REGION-latest.osm.pbf \
         --tf accept-nodes \
          building=* \
