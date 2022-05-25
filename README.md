@@ -1,3 +1,11 @@
+# Install
+
+Install [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis): `brew install osmosis`
+
+Install [OSMConvert](https://wiki.openstreetmap.org/wiki/Osmconvert): `brew install osmconvert`
+
+
+
 # Parsing points-of-interest from OSM extracts
 
 Following the general blueprint from [this Medium article](https://medium.com/codait/easy-access-to-all-points-of-interest-data-acc6569e45b2).
@@ -7,6 +15,10 @@ Following the general blueprint from [this Medium article](https://medium.com/co
 ### 1. Download OSM extract
 
 WRITE SCRIPT
+
+#### For now we are doing the following:
+
+Download a pbf extract of OSM data, e.g. [this extract of Quebec from GeoFabrick](https://download.geofabrik.de/north-america/canada/quebec.html), which we are using for Montreal. 
 
 ### 2. Select points of interest
 ```console
