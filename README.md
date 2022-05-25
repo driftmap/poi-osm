@@ -48,9 +48,11 @@ wget https://download.geofabrik.de/north-america/canada/quebec-latest.osm.pbf -P
 python osm_to_json.py parseosm --region {REGION} --osm {BOOLEAN}
 ```
 
-Alternatively you can run through steps 2b to 5 one by one:
+This is it, **you are done**.
 
 #### 2b. Select points of interest
+
+However, **alternatively** you can run through steps 2b to 5 one by one:
 
 ```console
 bash sh/osm_pbf_to_nodes_osm.sh -r $REGION
