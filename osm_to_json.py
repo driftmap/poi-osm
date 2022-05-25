@@ -15,6 +15,14 @@ def main() -> None:
 @click.option("--region", default="georgia", required=True, help="OSM region to parse.")
 @click.option("--osm", default=False, required=True, help="Parse all OSM files or just last file.")
 def parseosm(region:str, osm:bool) -> None:
+    if region == 'all':
+        for region in ['quebec','georgia','california','new-york']:
+            print(f"Now parsing {region}.")
+            run_parse(region, query_tags, osm)
+    else:
+        run_parse(region, query_tags, osm)
+
+def run_parse(region, query_tags, osm):
     if osm == True:
         subprocess.call(f"bash sh/osm_pbf_to_nodes_osm.sh -r {region}", shell=True)
         subprocess.call(f"bash sh/nodes_osm_to_poi_osm.sh -r {region}", shell=True)
