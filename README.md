@@ -4,6 +4,8 @@ Install [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis): `brew install os
 
 Install [OSMConvert](https://wiki.openstreetmap.org/wiki/Osmconvert): `brew install osmconvert`
 
+Install [OSMtoGeoJSON](https://github.com/tyrasd/osmtogeojson): `npm install -g osmtogeojson`
+
 # Parsing points-of-interest from OSM extracts
 
 Following the general blueprint from [this Medium article](https://medium.com/codait/easy-access-to-all-points-of-interest-data-acc6569e45b2).
@@ -28,7 +30,7 @@ wget https://download.geofabrik.de/north-america/us/georgia-latest.osm.pbf -P os
 
 **New York**
 ```console
-wget https://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf -P osm_extracts
+wget https://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf -P osm_extracts/new_york.osm.pbf
 ```
 
 **Quebec**
