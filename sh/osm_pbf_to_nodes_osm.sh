@@ -5,7 +5,7 @@ do
     esac
 done
 
-osmosis --read-pbf osm_extracts/$REGION.osm.pbf \
+osmosis --read-pbf osm_extracts/$REGION-latest.osm.pbf \
         --tf accept-nodes \
         aerialway=station \
         aeroway=aerodrome,helipad,heliport \

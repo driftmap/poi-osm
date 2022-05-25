@@ -5,5 +5,4 @@ do
     esac
 done
 
-
 osmtogeojson outputs/$REGION/poi.osm > outputs/$REGION/poi.geojson
