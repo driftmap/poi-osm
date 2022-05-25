@@ -18,7 +18,6 @@ For the latest OSM extract in the beta testing regions run one of the following 
 
 Download a pbf extract of OSM data, e.g. [this extract of Quebec from GeoFabrick](https://download.geofabrik.de/north-america/canada/quebec.html), which we are using for Montreal. 
 
-### 2. Select points of interest
 **California**
 ```console
 wget https://download.geofabrik.de/north-america/us/california-latest.osm.pbf -P osm_extracts
