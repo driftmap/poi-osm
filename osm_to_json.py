@@ -16,7 +16,7 @@ def main() -> None:
 @click.option("--osm", default=False, required=True, help="Parse all OSM files or just last file.")
 def parseosm(region:str, osm:bool) -> None:
     if region == 'all':
-        for region in ['quebec','georgia','california','new-york']:
+        for region in ['quebec','georgia','california','new_york']:
             print(f"Now parsing {region}.")
             run_parse(region, query_tags, osm)
     else:

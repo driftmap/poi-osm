@@ -5,4 +5,4 @@ do
     esac
 done
 
-osmtogeojson outputs/$REGION/poi.osm > outputs/$REGION/poi.geojson
+node --max_old_space_size=8000 `which osmtogeojson` outputs/$REGION/poi.osm > outputs/$REGION/poi.geojson
