@@ -12,7 +12,7 @@ Install [OSMtoGeoJSON](https://github.com/tyrasd/osmtogeojson): `npm install -g 
 
 ## Parsing points-of-interest from OSM extracts
 
-Following the general blueprint from [this Medium article](https://medium.com/codait/easy-access-to-all-points-of-interest-data-acc6569e45b2).
+Following the general blueprint from [this Medium article](https://medium.com/codait/easy-access-to-all-points-of-interest-data-acc6569e45b2) with [additional parsing](https://github.com/driftmap/poi-osm/blob/master/py/parse_poi.py) to get data from GeoJSON into ML usable training data stored as pickle files.
 
 ### Steps
 
