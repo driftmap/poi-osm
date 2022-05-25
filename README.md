@@ -14,53 +14,81 @@ Following the general blueprint from [this Medium article](https://medium.com/co
 
 ### 1. Download OSM extract
 
-WRITE SCRIPT
-
-#### For now we are doing the following:
+For the latest OSM extract in the beta testing regions run one of the following scripts:
 
 Download a pbf extract of OSM data, e.g. [this extract of Quebec from GeoFabrick](https://download.geofabrik.de/north-america/canada/quebec.html), which we are using for Montreal. 
 
 ### 2. Select points of interest
+**California**
+```console
+wget https://download.geofabrik.de/north-america/us/california-latest.osm.pbf -P osm_extracts
+```
+
+**Georgia**
+```console
+wget https://download.geofabrik.de/north-america/us/georgia-latest.osm.pbf -P osm_extracts
+```
+
+**New York**
+```console
+wget https://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf -P osm_extracts
+```
+
+**Quebec**
+```console
+wget https://download.geofabrik.de/north-america/canada/quebec-latest.osm.pbf -P osm_extracts
+```
+
+### 2a. Run OSM to (Geo)JSON parsing pipeline
+
+```python
+python osm_to_json.py parseosm --region {REGION} --osm {BOOLEAN}
+```
+
+Alternatively you can run through steps 2b to 5 one by one:
+
+### 2b. Select points of interest
 ```console
 
-bash osm_pbf_to_nodes_osm.sh
+bash sh/osm_pbf_to_nodes_osm.sh -r $REGION
 
 ```
 
 |Input|Output|
 |---|---|
-|quebec.osm.pbf|quebec.nodes.osm|
+|\*.osm.pbf|\*.nodes.osm|
 
 ### 3. Drop ways, keep nodes
 
 ```console
 
-bash nodes_osm_to_poi_osm.sh
+bash sh/nodes_osm_to_poi_osm.sh -r $REGION
 
 ```
 |Input|Output|
 |---|---|
-|quebec.nodes.pbf|quebec.poi.osm|
+|\*.nodes.pbf|\*.poi.osm|
 
 
 ### 4. Convert to (Geo)JSON
 
 ```console
 
-bash poi_osm_to_poi_geojson.sh
+bash sh/poi_osm_to_poi_geojson.sh -r $REGION
+
+```
 
 |Input|Output|
 |---|---|
-|quebec.poi.osm|quebec.poi.geojson|
-
-```
+|\*.poi.osm|\*.poi.geojson|
 
 ### 5. Clean (Geo)JSOn and extract names, labels and coordinates
 
-THIS NEEDS TO BE REWRITTEN TO *ALSO* GET COORS
-
 ```python
-
-bash nodes_osm_to_poi_osm.sh
-
+python osm_to_json.py parseosm --region {REGION} --osm False
 ```
+
+
+|Input|Output|
+|---|---|
+|\*.poi.geojson|\*.osm.text.tags.coords.pkl|
