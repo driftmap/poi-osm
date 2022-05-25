@@ -4,51 +4,57 @@ import re
 import sys
 
 from geojson import FeatureCollection
+from typing import List, Dict
 
-file = sys.argv[1]
+class POIParser():
+    def __init__(self, region:str, query_tags:list) -> None:
+        self.region = region
+        self.query_tags = query_tags
 
-address_tags = [
-    'name','city','street','postcode','housenumber','suburb','unit','housename'
-]
+    def load_data(self):
+        self.data = json.load(open(f"outputs/{self.region}/poi.geojson",'r'))
+        self.fc = FeatureCollection(self.data)
+        self.labels = []
+        self.with_labels = 0
+        self.with_coordinates = 0
+        self.with_both = 0
 
-def if_attribute_in_properties(properties):
-    attr_labels = []
-    other = {}
-    for attr in properties:
-        if attr in ['name']:
-            attr_parts = properties[attr].split(" ")
-            for part in attr_parts:
-                attr_labels.append((part, attr.upper()))
-        elif 'addr' in attr:
-            attr_split = attr.split(":")[1]
-            if attr_split in address_tags:
+    def parse_POI(self):
+        for idx, feat in enumerate(self.fc['features']):
+            label_data, other = self._if_attribute_in_properties(feat['properties'])
+            coordinates = feat['geometry']['coordinates']
+            id = re.findall('\d+', feat['id'])
+            if len(label_data) > 0:
+                self.with_labels += 1
+                self.labels.append((label_data, coordinates, id, other))
+                if len(coordinates) > 0:
+                    self.with_both += 1
+            if len(coordinates) > 0:
+                self.with_coordinates += 1
+        self._print_summaries()
+        pickle.dump(self.labels,open(f'outputs/{self.region}/{self.region}.osm.tagged.pkl', 'wb'))
+
+    def _print_summaries(self):
+        print(f"POIs with labels: {self.with_labels}")
+        print(f"POIs with coordinates: {self.with_coordinates}")
+        print(f"POIs with both: {self.with_both}")
+
+    def _if_attribute_in_properties(self, properties:List[str]):
+        attr_labels = []
+        other = {}
+        for attr in properties:
+            if attr in ['name']:
                 attr_parts = properties[attr].split(" ")
                 for part in attr_parts:
-                    attr_labels.append((part, attr_split.upper()))
-        else:
-            if attr != 'id':
-                other[attr] = properties[attr]
-    return attr_labels, other
+                    attr_labels.append((part, attr.upper()))
+            elif 'addr' in attr:
+                attr_split = attr.split(":")[1]
+                if attr_split in self.query_tags:
+                    attr_parts = properties[attr].split(" ")
+                    for part in attr_parts:
+                        attr_labels.append((part, attr_split.upper()))
+            else:
+                if attr != 'id':
+                    other[attr] = properties[attr]
+        return attr_labels, other
 
-data = json.load(open(file,'r'))
-fc = FeatureCollection(data)
-labels = []
-with_labels = 0
-with_coordinates = 0
-with_both = 0
-for idx, feat in enumerate(fc['features']):
-    label_data, other = if_attribute_in_properties(feat['properties'])
-    coordinates = feat['geometry']['coordinates']
-    id = re.findall('\d+', feat['id'])
-    if len(label_data) > 0:
-        with_labels += 1
-        labels.append((label_data, coordinates, id, other))
-        if len(coordinates) > 0:
-            with_both += 1
-    if len(coordinates) > 0:
-        with_coordinates += 1
-
-print(f"POIs with labels: {with_labels}")
-print(f"POIs with coordinates: {with_coordinates}")
-print(f"POIs with both: {with_both}")
-pickle.dump(labels,open('outputs/can.quebec.osm.tagged.pkl', 'wb'))
