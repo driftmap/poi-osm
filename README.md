@@ -1,6 +1,6 @@
 # OSM POI data to GeoJSON to tagged ML training data
 
-The purpose of this repository is to take [OSM extracts](https://www.geofabrik.de/data/download.html) and turn them into GeoJSON and then parse this data to produce tagged training data for machine learning with supervised address / POI parsing. Any OSM extract will work with the repo, but extracts that are larger than then ones used in step 1 can potentially cause memory issues for one or more of the parsing scripts. The repository is part of an effort to build an open-source end-to-end encrypted mapping app.
+The purpose of this repository is to take [OSM extracts](https://www.geofabrik.de/data/download.html) and turn them into GeoJSON and then parse this data to produce tagged training data for machine learning with supervised address / POI parsing. Any OSM extract will work with the repo, but extracts that are larger than then ones used in step 1 can potentially cause memory issues for one or more of the parsing scripts. The repository is part of an effort to build an open-source end-to-end encrypted [mapping app](https://github.com/driftmap).
 
 ## Install
 
