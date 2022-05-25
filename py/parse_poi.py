@@ -39,7 +39,7 @@ class POIParser():
         print(f"POIs with coordinates: {self.with_coordinates}")
         print(f"POIs with both: {self.with_both}")
 
-    def _if_attribute_in_properties(self, properties:List[str]):
+    def _if_attribute_in_properties(self, properties:List[Dict]):
         attr_labels = []
         other = {}
         for attr in properties:

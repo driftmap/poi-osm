@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -130,3 +131,8 @@ dmypy.json
 
 # Mac stuff
 .DS_Store
+=======
+*.swp
+*.osm.pbf
+*.osm
+>>>>>>> 74ccfe4cd78e7377bef9a058806ff5652fbae159
