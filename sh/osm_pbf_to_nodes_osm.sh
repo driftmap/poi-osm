@@ -6,8 +6,7 @@ do
     esac
 done
 
-#ls ../osm_extracts/
-osmosis --read-pbf ../osm_extracts/$REGION-latest.osm.pbf \
+osmosis --read-pbf osm_extracts/$REGION-latest.osm.pbf \
         --tf accept-nodes \
          building=* \
          aerialway=station \
@@ -26,7 +25,7 @@ osmosis --read-pbf ../osm_extracts/$REGION-latest.osm.pbf \
           amenity=drinking_water,watering_point,shower,telephone,toilets,bench,parcel_locker,bbq,dog_toilet,give_box,post_box,fountain \
         --tf reject-ways \
         --tf reject-relations \
-        --write-xml ../outputs/$REGION/nodes.osm
+        --write-xml outputs/$REGION/nodes.osm
 
 #        --write-xml quebec.nodes.osm
 

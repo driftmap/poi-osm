@@ -48,9 +48,7 @@ Alternatively you can run through steps 2b to 5 one by one:
 
 ### 2b. Select points of interest
 ```console
-
 bash sh/osm_pbf_to_nodes_osm.sh -r $REGION
-
 ```
 
 |Input|Output|
@@ -60,9 +58,7 @@ bash sh/osm_pbf_to_nodes_osm.sh -r $REGION
 ### 3. Drop ways, keep nodes
 
 ```console
-
 bash sh/nodes_osm_to_poi_osm.sh -r $REGION
-
 ```
 |Input|Output|
 |---|---|
@@ -72,9 +68,7 @@ bash sh/nodes_osm_to_poi_osm.sh -r $REGION
 ### 4. Convert to (Geo)JSON
 
 ```console
-
 bash sh/poi_osm_to_poi_geojson.sh -r $REGION
-
 ```
 
 |Input|Output|
