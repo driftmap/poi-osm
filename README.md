@@ -10,7 +10,7 @@ For the latest OSM extract in the beta testing regions run one of the following 
 
 **California**
 ```console
-wget https://download.geofabrik.de/north-america/us/california-latest.osm.pbf
+wget https://download.geofabrik.de/north-america/us/california-latest.osm.pbf -P osm_extracts
 ```
 
 **Georgia**
@@ -28,10 +28,18 @@ wget https://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf -P o
 wget https://download.geofabrik.de/north-america/canada/quebec-latest.osm.pbf -P osm_extracts
 ```
 
-### 2. Select points of interest
+### 2a. Run OSM to (Geo)JSON parsing pipeline
+
+```python
+python osm_to_json.py parseosm --region {REGION} --osm {BOOLEAN}
+```
+
+Alternatively you can run through steps 2b to 5 one by one:
+
+### 2b. Select points of interest
 ```console
 
-bash sh/osm_pbf_to_nodes_osm.sh
+bash sh/osm_pbf_to_nodes_osm.sh -r $REGION
 
 ```
 
@@ -43,7 +51,7 @@ bash sh/osm_pbf_to_nodes_osm.sh
 
 ```console
 
-bash sh/nodes_osm_to_poi_osm.sh
+bash sh/nodes_osm_to_poi_osm.sh -r $REGION
 
 ```
 |Input|Output|
@@ -55,7 +63,7 @@ bash sh/nodes_osm_to_poi_osm.sh
 
 ```console
 
-bash sh/poi_osm_to_poi_geojson.sh
+bash sh/poi_osm_to_poi_geojson.sh -r $REGION
 
 ```
 
@@ -66,10 +74,9 @@ bash sh/poi_osm_to_poi_geojson.sh
 ### 5. Clean (Geo)JSOn and extract names, labels and coordinates
 
 ```python
-
-python py/clean_poi.py quebec.poi.geojson
-
+python osm_to_json.py parseosm --region {REGION} --osm False
 ```
+
 
 |Input|Output|
 |---|---|
