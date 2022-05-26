@@ -22,7 +22,7 @@ osmosis --read-pbf osm_extracts/$REGION-latest.osm.pbf \
          addr:postcode=* \
          addr:city=* \
         --tf reject-nodes \
-          amenity=drinking_water,watering_point,shower,telephone,toilets,bench,parcel_locker,bbq,dog_toilet,give_box,post_box,fountain \
+          amenity=drinking_water,watering_point,shower,telephone,toilets,bench,parcel_locker,bbq,dog_toilet,give_box,post_box,fountain,waste_basket,parking_entrance,parking,fire_station \
         --tf reject-ways \
         --tf reject-relations \
         --write-xml outputs/$REGION/nodes.osm
