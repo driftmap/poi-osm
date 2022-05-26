@@ -54,7 +54,9 @@ class POIParser():
                     for part in attr_parts:
                         attr_labels.append((part, attr_split.upper()))
             else:
-                if attr != 'id':
-                    other[attr] = properties[attr]
+                if 'name' in properties.keys() or any("addr" in k for k in properties.keys()):
+                    if attr not in ['id','source','created_by']:
+                        if 'brand' not in attr:
+                            other[attr] = properties[attr]
         return attr_labels, other
 
