@@ -8,7 +8,6 @@ done
 
 osmosis --read-pbf osm_extracts/$REGION-latest.osm.pbf \
         --tf accept-nodes \
-         building=* \
          aerialway=station \
          aeroway=aerodrome,helipad,heliport \
          amenity=* \
@@ -17,8 +16,6 @@ osmosis --read-pbf osm_extracts/$REGION-latest.osm.pbf \
          historic=* leisure=* office=* \
          public_transport=stop_position,stop_area railway=station \
          shop=* tourism=* \
-         addr:housenumber=* \
-         addr:street=* \
          addr:postcode=* \
          addr:city=* \
         --tf reject-nodes \
